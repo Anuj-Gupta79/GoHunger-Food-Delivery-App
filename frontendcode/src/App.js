@@ -1,8 +1,12 @@
 import './App.css';
 
+import HomePage from './Screen/HomePage';
+
 function App() {
   return (
-    <div className="App">Food Delivery</div>
+    <div className="App">
+      <HomePage/>
+    </div>
   );
 }
 
