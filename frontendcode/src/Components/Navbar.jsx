@@ -6,7 +6,7 @@ export default function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-danger position-sticky">
         <div className="container-fluid">
-          <Link className="navbar-brand fs-1" to="/">
+          <Link className="navbar-brand fs-1 fst-italic" to="/">
             GoHunger
           </Link>
           <button
