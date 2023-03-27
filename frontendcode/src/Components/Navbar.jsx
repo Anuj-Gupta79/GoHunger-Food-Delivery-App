@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-danger position-sticky">
+      <nav className="navbar navbar-expand-lg navbar-dark position-sticky" style={{"background" : "#4169E1"}}>
         <div className="container-fluid">
           <Link className="navbar-brand fs-1 fst-italic" to="/">
             GoHunger

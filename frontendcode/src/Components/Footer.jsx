@@ -12,7 +12,7 @@ export default function Footer() {
               className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1m"
             ></Link>
             <span className="text-muted">
-              © 2022 <i>GoFood</i>, Inc
+              © 2023 <i>GoHunger</i>, Inc
             </span>
           </div>
 
