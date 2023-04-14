@@ -1,11 +1,19 @@
 import mongoose from 'mongoose';
-const URL = 'mongodb+srv://GoHunger:<gohunger123>@gohunger.80ezsib.mongodb.net/?retryWrites=true&w=majority';
+const URL = 'mongodb+srv://GoHunger:gohunger123@gohunger.80ezsib.mongodb.net/GoHungerMern?retryWrites=true&w=majority';
 
+mongoose.set("strictQuery", false);
 
-const mongodb = () => {
-    mongoose.connect(URL, (err, result)=>{
+const mongodb = async() => {
+    await mongoose.connect(URL, (err, result)=>{
         if(err) console.log(err);
-        console.log("Connected Successfully!");
+        else{
+            console.log("Connected Successfully!");
+            const fetchData = mongoose.connection.db.collection("FoodData");
+            fetchData.find({}).toArray(function(err, data){
+                if(err) console.log(err);
+                // else console.log(data);
+            })
+        }
     });
 }
 
