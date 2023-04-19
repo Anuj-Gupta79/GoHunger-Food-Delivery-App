@@ -6,19 +6,19 @@ export default function Carousal() {
       id="carouselExampleFade"
       className="carousel slide carousel-fade"
       data-bs-ride="carousel"
-      style={{objectFit:"contain"}}
+      style={{ objectFit: "contain" }}
     >
       <div className="carousel-inner">
-        <div className="carousel-caption" style={{zIndex : "10"}}>
+        <div className="carousel-caption" style={{ zIndex: "10" }}>
           <form className="d-flex">
             <input
               className="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
-              style={{background : "#c4dce0", color:"black"}}
+              style={{ background: "rgb(255, 201, 201)", color: "black" }}
             />
-            <button className="btn text-white bg-primary" type="submit" >
+            <button className="btn text-white bg-danger" type="submit">
               Search
             </button>
           </form>
@@ -27,23 +27,23 @@ export default function Carousal() {
           <img
             src="https://source.unsplash.com/random/900x700/?burger"
             className="d-block w-100"
-            style={{filter : "brightness(30%)"}}
+            style={{ filter: "brightness(30%)" }}
             alt="..."
-            />
+          />
         </div>
         <div className="carousel-item">
           <img
             src="https://source.unsplash.com/random/900x700/?pasta"
             className="d-block w-100"
-            style={{filter : "brightness(30%)"}}
+            style={{ filter: "brightness(30%)" }}
             alt="..."
-            />
+          />
         </div>
         <div className="carousel-item">
           <img
             src="https://source.unsplash.com/random/900x700/?pizza"
             className="d-block w-100"
-            style={{filter : "brightness(30%)"}}
+            style={{ filter: "brightness(30%)" }}
             alt="..."
           />
         </div>

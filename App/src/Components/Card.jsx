@@ -1,15 +1,18 @@
 import React from "react";
 
-export default function Card() {
+export default function Card(props) {
+  let options = props.options;
+  let priceOptions = Object.keys(options);
+  let foodItem = props.item;
+
   return (
     <div
-      className="card mt-3 bg-secondary"
-      style={{ background : "#4169E1"}}
+      className="card mt-3 bg-danger"
+      style={{ width: "16rem", maxHeight: "360px" }}
     >
-      <img className="card-img-top" src="https://source.unsplash.com/random/900x700/?maggi" alt="..." />
+       <img src={props.ImgSrc} className="card-img-top" alt="..." style={{ height: "120px", objectFit: "fill" }} />
       <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">This is the text.</p>
+      <h5 className="card-title">{props.foodName}</h5>
         <div className="container w-100">
           <select
             className="ml-2 h-100  rounded"

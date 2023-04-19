@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'NHaasGroteskDSPro-65Md' !important;
+  background-color: rgb(255, 201, 201);
 }
 
 code {

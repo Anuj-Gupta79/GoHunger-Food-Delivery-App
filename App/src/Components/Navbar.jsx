@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <div>
       {/* option style={{"background" : "#4169E1"}}  */}
-      <nav className="navbar navbar-expand-lg navbar-dark position-sticky bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-dark position-sticky bg-danger">
         <div className="container-fluid">
           <Link className="navbar-brand fs-1 fst-italic" to="/">
             GoHunger

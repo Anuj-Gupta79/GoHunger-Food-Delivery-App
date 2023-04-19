@@ -1,7 +1,10 @@
 import express from "express";
 import User from "../Models/User.js";
 import { body, validationResult } from "express-validator";
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
+const jwtSecret = "ahsjucbdhebdusncujsoicnduxhdybncjcksomcid";
 const router = express.Router();
 
 router.post(
@@ -12,7 +15,7 @@ router.post(
     body("password").isLength({ min: 5 }),
   ],
   async (req, res) => {
-    const errors = validationResult(req.body);
+    const errors = validationResult(req);
     if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
 
@@ -27,12 +30,21 @@ router.post(
           .status(400)
           .json({ errors: "Enter the correct credentials :(" });
 
-      if (userData.password !== req.body.password)
+      const pwdCompare = bcrypt.compare(req.body.password, userData.password);
+      if (!pwdCompare)
         return res
           .status(400)
           .json({ errors: "Enter the correct credentials :(" });
 
-      res.json({ success: true });
+      const data = {
+        user : {
+          id : userData.id,
+        }
+      }
+
+      const authToken =  jwt.sign(data, jwtSecret);
+
+      res.json({ success: true, authToken: authToken });
     } catch (error) {
       res.json({ success: false });
     }
