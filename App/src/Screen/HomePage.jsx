@@ -7,6 +7,7 @@ import Footer from "../Components/Footer";
 export default function HomePage() {
   const [foodCat, setFoodCat] = useState([]);
   const [foodItems, setFoodItems] = useState([]);
+  const [search, setSearch] = useState("");
 
   const loadData = async () => {
     let response = await fetch("http://localhost:3001/GoHunger/getData", {
@@ -34,44 +35,55 @@ export default function HomePage() {
       <div>
         <div
           id="carouselExampleFade"
-          className="carousel slide carousel-fade"
+          className="carousel slide carousel-fade "
           data-bs-ride="carousel"
-          style={{ objectFit: "contain" }}
         >
-          <div className="carousel-inner">
-            <div className="carousel-caption" style={{ zIndex: "10" }}>
-              <div className="d-flex justify-content-center">
+          <div className="carousel-inner " id="carousel">
+            <div class=" carousel-caption  " style={{ zIndex: "9" }}>
+              <div className=" d-flex justify-content-center">
                 <input
-                  className="form-control me-2"
+                  className="form-control me-2 w-75 bg-white text-dark"
                   type="search"
-                  placeholder="Search"
+                  placeholder="Search in here..."
                   aria-label="Search"
-                  style={{ background: "rgb(255, 201, 201)", color: "black" }}
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
                 />
-                <button className="btn text-white bg-danger" type="submit">
-                  Search
+                <button
+                  className="btn text-white bg-danger"
+                  onClick={() => {
+                    setSearch("");
+                  }}
+                >
+                  X
                 </button>
               </div>
             </div>
-            <div className="carousel-item active">
+            <div className="carousel-item active" style={{}}>
               <img
                 src="https://source.unsplash.com/random/900x700/?burger"
-                className="d-block w-100"
+                className="d-block"
+                style={{
+                  filter: "brightness(30%)",
+                  width: "1000px",
+                  objectFit: "fill",
+                }}
+                alt="..."
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                src="https://source.unsplash.com/random/900x700/?pastry"
+                className="d-block"
                 style={{ filter: "brightness(30%)" }}
                 alt="..."
               />
             </div>
             <div className="carousel-item">
               <img
-                src="https://source.unsplash.com/random/900x700/?pasta"
-                className="d-block w-100"
-                style={{ filter: "brightness(30%)" }}
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="https://source.unsplash.com/random/900x700/?pizza"
+                src="https://source.unsplash.com/random/900x700/?barbeque"
                 className="d-block w-100"
                 style={{ filter: "brightness(30%)" }}
                 alt="..."
@@ -123,7 +135,11 @@ export default function HomePage() {
                   {foodItems !== [] ? (
                     foodItems
                       .filter(
-                        (items) => items.CategoryName === data.CategoryName
+                        (items) =>
+                          items.CategoryName === data.CategoryName &&
+                          items.name
+                            .toLowerCase()
+                            .includes(search.toLowerCase())
                       )
                       .map((filterItems) => {
                         return (
@@ -131,12 +147,8 @@ export default function HomePage() {
                             key={filterItems.id}
                             className="col-12 col-md-6 col-lg-3"
                           >
-                            <Card
-                              foodName={filterItems.name}
-                              item={filterItems}
-                              options={filterItems.options[0]}
-                              ImgSrc={filterItems.img}
-                            ></Card>
+                          <Card foodName={filterItems.name} item={filterItems} options={filterItems.options[0]} ImgSrc={filterItems.img} ></Card>
+
                           </div>
                         );
                       })
