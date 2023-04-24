@@ -29,7 +29,9 @@ export default function SignUp() {
 
     if(!json.success) alert("Enter Valid credentials");
 
-    if(json.success) navigate('/');
+    if(json.success){
+      setTimeout(navigate('/'),3000);
+    }
   };
 
   const onChange = (event) => {

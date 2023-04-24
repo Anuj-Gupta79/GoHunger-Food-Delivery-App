@@ -39,9 +39,9 @@ router.post("/orderData", async (req, res) => {
 
 router.post("/myOrderData", async (req, res) => {
   try {
-    console.log(req.body.email);
+    console.log("email:::",req.body.email);
     let eId = await Orders.findOne({ email: req.body.email });
-    res.json({ orderData: eId });
+    res.json({eId});
   } catch (error) {
     res.send("Error", error.message);
   }

@@ -61,33 +61,31 @@ export default function HomePage() {
                 </button>
               </div>
             </div>
-            <div className="carousel-item active" style={{}}>
-              <img
-                src="https://source.unsplash.com/random/900x700/?burger"
-                className="d-block"
-                style={{
-                  filter: "brightness(30%)",
-                  width: "1000px",
-                  objectFit: "fill",
-                }}
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="https://source.unsplash.com/random/900x700/?pastry"
-                className="d-block"
-                style={{ filter: "brightness(30%)" }}
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="https://source.unsplash.com/random/900x700/?barbeque"
-                className="d-block w-100"
-                style={{ filter: "brightness(30%)" }}
-                alt="..."
-              />
+            <div style={{width:"100%",height:"70vh"}}>
+              <div className="carousel-item active">
+                <img
+                  src="https://source.unsplash.com/random/1440x500/?burger"
+                  style={{
+                    filter: "brightness(30%)",
+                    backgroundSize:"cover"
+                  }}
+                  alt="..."
+                />
+              </div>
+              <div className="carousel-item">
+                <img
+                  src="https://source.unsplash.com/random/1440x500/?pastry"
+                  style={{ filter: "brightness(30%)"}}
+                  alt="..."
+                />
+              </div>
+              <div className="carousel-item">
+                <img
+                  src="https://source.unsplash.com/random/1440x500/?barbeque"
+                  style={{ filter: "brightness(30%)"}}
+                  alt="..."
+                />
+              </div>
             </div>
           </div>
           <button
@@ -147,8 +145,12 @@ export default function HomePage() {
                             key={filterItems.id}
                             className="col-12 col-md-6 col-lg-3"
                           >
-                          <Card foodName={filterItems.name} item={filterItems} options={filterItems.options[0]} ImgSrc={filterItems.img} ></Card>
-
+                            <Card
+                              foodName={filterItems.name}
+                              item={filterItems}
+                              options={filterItems.options[0]}
+                              ImgSrc={filterItems.img}
+                            ></Card>
                           </div>
                         );
                       })
