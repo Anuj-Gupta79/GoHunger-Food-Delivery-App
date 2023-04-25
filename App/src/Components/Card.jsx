@@ -56,7 +56,8 @@ export default function Card(props) {
       <h5 className="card-title">{foodItem.name}</h5>
         <div className="container w-100">
           <select
-            className="ml-2 h-100  rounded bg-danger"
+            className="ml-2 h-100  rounded"
+            style={{backgroundColor:"#168794"}}
             onChange={(e) => setQty(e.target.value)}
           >
             {Array.from(Array(6), (e, i) => {
@@ -68,20 +69,21 @@ export default function Card(props) {
             })}
           </select>
           <select
-            className="m-2 h-100 rounded bg-danger cursor-pointer"
+            className="m-2 h-100 rounded cursor-pointer"
+            style={{backgroundColor:"#168794"}}
             onChange={(e) => setSize(e.target.value)}
             ref={priceRef}
           >
            {
             priceOptions.map((data) => {
-              return <option key={data} value={data}>{data}</option>
+              return <option style={{backgroundColor:"#168794"}} key={data} value={data}>{data}</option>
             })
            }
           </select>
           <div className="d-inline h-100 fs-5"> ₹{finalPrice}/-</div>
         </div>
         <hr />
-        <button className={`btn btn-danger justify-center ms-2 `} onClick={handleAddToCart}>Add to Cart</button>
+        <button className={`btn justify-center ms-2 `} style={{backgroundColor:"#168794"}} onClick={handleAddToCart}>Add to Cart</button>
       </div>
     </div>
   );

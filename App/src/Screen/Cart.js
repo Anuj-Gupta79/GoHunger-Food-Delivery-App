@@ -40,7 +40,7 @@ export default function Cart() {
     <div>
       <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
         <table className="table table-hover">
-          <thead className="text-danger fs-4">
+          <thead className="text-blue fs-4">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>

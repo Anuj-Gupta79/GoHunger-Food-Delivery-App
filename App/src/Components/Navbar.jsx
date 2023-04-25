@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark position-sticky bg-danger">
+      <nav className="navbar navbar-expand-lg navbar-dark position-sticky" style={{backgroundColor:"#168794"}}>
         <div className="container-fluid">
           <Link className="navbar-brand fs-1 fst-italic" to="/">
             GoHunger
@@ -65,17 +65,17 @@ export default function Navbar() {
 
             {!localStorage.getItem("authToken") ? (
               <form className="d-flex">
-                <Link className="btn bg-white text-danger mx-1" to="/login">
+                <Link className="btn bg-white mx-1" to="/login" style={{color:"#168794"}}>
                   LogIn
                 </Link>
-                <Link className="btn bg-white text-danger mx-1" to="/signUp">
+                <Link className="btn bg-white mx-1" to="/signUp" style={{color:"#168794"}}>
                   Sign Up
                 </Link>
               </form>
             ) : (
               <div>
                 <div
-                  className="btn bg-white text-danger mx-2"
+                  className="btn btn-danger bg-red text-white mx-2"
                   onClick={loadCart}
                 >
                   My Cart{" "}
@@ -96,7 +96,7 @@ export default function Navbar() {
                   ""
                 )}
                 <div
-                  className="btn bg-white text-primary mx-2"
+                  className="btn btn-danger bg-red"
                   onClick={handleLogout}
                 >
                   {" "}

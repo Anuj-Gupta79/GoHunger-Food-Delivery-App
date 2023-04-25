@@ -9,8 +9,8 @@ router.post(
   "/createUser",
   [
     body('email').isEmail(),
-    body('password').isLength({min : 5}),
-    body('name').isLength({min : 5})
+    body('password').isLength({min : 2}),
+    body('name').isLength({min : 2})
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -27,8 +27,10 @@ router.post(
         location: req.body.location,
       });
       res.json({ success: true });
+      console.log("success")
     } catch (error) {
       res.json({ success: false });
+      console.log("failed")
     }
   }
 );

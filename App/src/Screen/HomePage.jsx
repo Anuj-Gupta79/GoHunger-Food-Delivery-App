@@ -52,7 +52,8 @@ export default function HomePage() {
                   }}
                 />
                 <button
-                  className="btn text-white bg-danger"
+                  className="btn text-white"
+                  style={{background:"#168794"}}
                   onClick={() => {
                     setSearch("");
                   }}
