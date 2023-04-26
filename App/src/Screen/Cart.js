@@ -40,7 +40,7 @@ export default function Cart() {
     <div>
       <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
         <table className="table table-hover">
-          <thead className="text-blue fs-4">
+          <thead className="text-blue fs-4" style={{color:"#923224"}}>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
@@ -60,14 +60,14 @@ export default function Cart() {
                   <td>{food.size}</td>
                   <td>{food.price}</td>
                   <td>
-                  <button type="button" className="btn p-0"><Delete onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button> </td></tr>
+                  <button type="button" className="btn p-0"><Delete  onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button> </td></tr>
               );
             })}
           </tbody>
         </table>
         <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div>
         <div>
-          <button className='btn bg-danger mt-5 ' onClick={handleCheckOut} > Check Out </button>
+          <button className='btn  mt-5 ' style={{backgroundColor:"#168794"}} onClick={handleCheckOut} > Check Out </button>
         </div>
       </div>
     </div>

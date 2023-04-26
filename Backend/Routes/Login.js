@@ -7,48 +7,42 @@ import jwt from 'jsonwebtoken';
 const jwtSecret = "ahsjucbdhebdusncujsoicnduxhdybncjcksomcid";
 const router = express.Router();
 
-router.post(
-  "/logIn",
-  [
-    body("email").isEmail(),
-    body("email").isLength({ min: 7 }),
-    body("password").isLength({ min: 5 }),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty())
-      return res.status(400).json({ errors: errors.array() });
+router.post('/logIn', [
+  body('email', "Enter a Valid Email").isEmail(),
+  body('password', "Password cannot be blank").exists(),
+], async (req, res) => {
+  let success = false
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+  }
 
-    let email = req.body.email;
-    console.log(email);
-    try {
-      const userData = await User.findOne({email});
-      console.log(userData);
-
-      if (!userData)
-        return res
-          .status(400)
-          .json({ errors: "Enter the correct credentials :(" });
-
-      const pwdCompare = bcrypt.compare(req.body.password, userData.password);
-      if (!pwdCompare)
-        return res
-          .status(400)
-          .json({ errors: "Enter the correct credentials :(" });
-
-      const data = {
-        user : {
-          id : userData.id,
-        }
+  const { email, password } = req.body;
+  try {
+      let user = await User.findOne({ email });  
+      if (!user) {
+          return res.status(400).json({ success, error: "Try Logging in with correct credentials" });
       }
 
-      const authToken =  jwt.sign(data, jwtSecret);
+      const pwdCompare = await bcrypt.compare(password, user.password); // this return true false.
+      if (!pwdCompare) {
+          return res.status(400).json({ success, error: "Try Logging in with correct credentials" });
+      }
+      const data = {
+          user: {
+              id: user.id
+          }
+      }
+      success = true;
+      const authToken = jwt.sign(data, jwtSecret);
+      res.json({ success, authToken })
 
-      res.json({ success: true, authToken: authToken });
-    } catch (error) {
-      res.json({ success: false });
-    }
+
+  } catch (error) {
+      console.error(error.message)
+      res.send("Server Error")
   }
-);
+})
+
 
 export default router;

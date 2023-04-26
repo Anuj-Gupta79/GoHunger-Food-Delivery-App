@@ -26,19 +26,18 @@ export default function SignUp() {
     })
     // console.log(latLong)
     let [lat, long] = latLong
-    console.log(lat, long)
-    const response = await fetch("http://localhost:5000/api/auth/getlocation", {
+    // console.log(lat, long)
+    const response = await fetch("http://localhost:3001/GoHunger/getLocation", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ latLong: { lat, long } })
-
     });
     const { location } = await response.json()
-    console.log(location);
-    setAddress(location);
-    setCredentials({ ...credentials, [e.target.name]: location })
+    console.log(location.slice(10));
+    setAddress(location.slice(10));
+    setCredentials({ ...credentials, [e.target.name]: location.slice(10) })
   }
 
 
@@ -63,8 +62,10 @@ export default function SignUp() {
     if(!json.success) alert("Enter Valid credentials");
 
     if(json.success){
-      localStorage.setItem('token', json.authToken)
-      navigate("/login")
+      localStorage.setItem("userEmail", credentials.email)
+      localStorage.setItem("authToken", json.authToken)
+      // console.log(localStorage.getItem("authToken"));
+      navigate("/")
     }
   };
 
@@ -78,7 +79,7 @@ export default function SignUp() {
           <Navbar></Navbar>
         </div>
         <div className="container">
-        <form className='w-50 m-auto mt-5 border bg-dark border-danger rounded' onSubmit={handleSubmit}>
+        <form className='w-50 m-auto mt-5  bg-dark rounded' style={{border:"2px solid #168794"}} onSubmit={handleSubmit}>
             <div className="m-3">
               <label htmlFor="name" className="form-label">Name</label>
               <input type="text" className="form-control" name='name' value={credentials.name} onChange={onChange} aria-describedby="emailHelp" placeholder="Enter your name" />
@@ -94,14 +95,14 @@ export default function SignUp() {
               </fieldset>
             </div>
             <div className="m-3">
-              <button type="button" onClick={handleClick} name="geolocation" className=" btn btn-danger">Current Location </button>
+              <button type="button" onClick={handleClick} name="geolocation" className="btn" style={{background:"#168794"}}>Current Location </button>
             </div>
             <div className="m-3">
               <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
               <input type="password" className="form-control" value={credentials.password} onChange={onChange} name='password' placeholder="Create the password" />
             </div>
-            <button type="submit" className="m-3 btn btn-danger">Submit</button>
-            <Link to="/login" className="m-3 mx-1 btn btn-primary">Already a user</Link>
+            <button type="submit" className="m-3 btn" style={{background:"#168794"}}>Submit</button>
+            <Link to="/login" className="m-3 mx-1 btn btn-danger">Already have an account?</Link>
           </form>
         </div>
       </div>

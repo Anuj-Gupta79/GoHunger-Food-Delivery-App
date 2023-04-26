@@ -96,7 +96,7 @@ export default function Navbar() {
                   ""
                 )}
                 <div
-                  className="btn btn-danger bg-red"
+                  className="btn btn-danger"
                   onClick={handleLogout}
                 >
                   {" "}

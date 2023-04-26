@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from "../Components/Navbar";
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
@@ -27,7 +28,7 @@ export default function Login() {
     if (json.success){
       localStorage.setItem("userEmail", credentials.email)
       localStorage.setItem("authToken", json.authToken);
-      console.log(localStorage.getItem("authToken"));
+      // console.log(localStorage.getItem("authToken"));
       navigate('/');
     }
   };
@@ -37,46 +38,27 @@ export default function Login() {
   };
   return(
     <>
-     <div className="container">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              name="email"
-              value={credentials.email}
-              onChange={onChange}
-            />
-            <div id="emailHelp" className="form-text">
-              We'll never share your email with anyone else.
-            </div>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              name="password"
-              value={credentials.password}
-              onChange={onChange}
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-          <Link to="/signUp" className="m-3 btn btn-danger">
-            Haven't an account?
-          </Link>
-        </form>
+      <div style={{backgroundImage: 'url("https://bit.ly/imgUrl")', height: '100vh', backgroundSize: 'cover' }}>
+      <div>
+        <Navbar />
       </div>
+      <div className='container'>
+        <form className='w-50 m-auto mt-5  bg-dark  rounded' style={{border:"2px solid #168794"}}  onSubmit={handleSubmit}>
+          <div className="m-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+            <input type="email" className="form-control" name='email' value={credentials.email} onChange={onChange} aria-describedby="emailHelp" placeholder="Enter your email"/>
+            <div id="emailHelp" className="form-text">We'll never share your email with anyone.</div>
+          </div>
+          <div className="m-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+            <input type="password" className="form-control" value={credentials.password} onChange={onChange} name='password' placeholder="Enter your password" />
+          </div>
+          <button type="submit" className="m-3 btn" style={{background:"#168794"}}>Submit</button>
+          <Link to="/signup" className="m-3 mx-1 btn btn-danger">Create an account !</Link>
+        </form>
+
+      </div>
+    </div>
     </>
   );
 }

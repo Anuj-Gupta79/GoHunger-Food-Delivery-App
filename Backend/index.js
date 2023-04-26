@@ -4,6 +4,7 @@ import SignupRoutes from "./Routes/CreateUser.js";
 import LoginRoutes from "./Routes/Login.js";
 import DisplayData from "./Routes/DisplayData.js"
 import OrderRoutes from "./Routes/OrderData.js";
+import LocationRoutes from './/Routes/GetLocation.js';
 
 const app = express();
 const PORT = 3001;
@@ -28,6 +29,7 @@ app.use("/GoHunger", SignupRoutes);
 app.use("/GoHunger", LoginRoutes);
 app.use("/GoHunger", DisplayData);
 app.use("/GoHunger", OrderRoutes);
+app.use("/GoHunger", LocationRoutes);
 
 app.listen(PORT, () => {
   console.log(`Port is listening on http://localhost:${PORT}`);
