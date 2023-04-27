@@ -4,7 +4,7 @@ import Badge from "react-bootstrap/Badge";
 import Cart from "../Screen/Cart";
 import Modal from "../Model";
 import { useCart } from "./ContextReducer";
-// import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -78,6 +78,7 @@ export default function Navbar() {
                   className="btn btn-danger bg-red text-white mx-2"
                   onClick={loadCart}
                 >
+                  <ShoppingCartIcon></ShoppingCartIcon>
                   My Cart{" "}
                   {data.length !== 0 ? (
                     <Badge pill bg="success">
