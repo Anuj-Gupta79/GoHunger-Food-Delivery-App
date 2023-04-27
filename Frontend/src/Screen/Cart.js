@@ -40,7 +40,7 @@ export default function Cart() {
     <div>
       <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
         <table className="table table-hover">
-          <thead className="text-blue fs-4" style={{color:"#923224"}}>
+          <thead className="fs-4" style={{color:"#168794"}}>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
@@ -60,7 +60,7 @@ export default function Cart() {
                   <td>{food.size}</td>
                   <td>{food.price}</td>
                   <td>
-                  <button type="button" className="btn p-0"><Delete  onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button> </td></tr>
+                  <button type="button" className="btn p-0" style={{color:"grey"}}><Delete  onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button> </td></tr>
               );
             })}
           </tbody>

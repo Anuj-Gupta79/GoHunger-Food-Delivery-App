@@ -34,7 +34,7 @@ export default function MyOrder() {
 
       <div className="container">
         <div className="row">
-          <h1>Order History</h1>
+          <h1 className="mt-4">Previous Orders</h1>
           {orderData.map((item) =>
             item.map((it) => {
               return (
