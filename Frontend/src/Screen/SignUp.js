@@ -27,7 +27,7 @@ export default function SignUp() {
     // console.log(latLong)
     let [lat, long] = latLong
     // console.log(lat, long)
-    const response = await fetch("https://go-hunger-backend-e2cn.onrender.com/GoHunger/getLocation", {
+    const response = await fetch("http://localhost:3001/GoHunger/getLocation", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
