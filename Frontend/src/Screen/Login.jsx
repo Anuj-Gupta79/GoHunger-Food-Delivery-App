@@ -12,7 +12,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3001/GoHunger/logIn", {
+    const response = await fetch("https://go-hunger-backend-e2cn.onrender.com/GoHunger/logIn", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
