@@ -19,6 +19,8 @@ export default function HomePage() {
 
     response = await response.json();
 
+    console.log(response);
+    
     setFoodItems(response[0]);
     setFoodCat(response[1]);
   };
