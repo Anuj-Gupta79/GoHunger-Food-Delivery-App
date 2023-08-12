@@ -6,7 +6,7 @@ export default function Carousal() {
       id="carouselExampleFade"
       className="carousel slide carousel-fade"
       data-bs-ride="carousel"
-      style={{ objectFit: "contain" }}
+      style={{ objectFit: "contain"}}
     >
       <div className="carousel-inner">
         <div className="carousel-caption" style={{ zIndex: "10" }}>
@@ -25,7 +25,7 @@ export default function Carousal() {
         </div>
         <div className="carousel-item active">
           <img
-            src="https://source.unsplash.com/random/900x700/?burger"
+            src="https://source.unsplash.com/random/1000x1000/?burger"
             className="d-block w-100"
             style={{ filter: "brightness(30%)" }}
             alt="..."

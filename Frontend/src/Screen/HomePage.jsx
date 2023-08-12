@@ -10,7 +10,7 @@ export default function HomePage() {
   const [search, setSearch] = useState("");
 
   const loadData = async () => {
-    let response = await fetch("https://go-hunger-backend-e2cn.onrender.com/GoHunger/getData", {
+    let response = await fetch("http://localhost:3001/GoHunger/getData", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -17,7 +17,7 @@ export default function Cart() {
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
     console.log(userEmail);
-    let response = await fetch("https://go-hunger-backend-e2cn.onrender.com/GoHunger/orderData", {
+    let response = await fetch("http://localhost:3001/GoHunger/orderData", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
